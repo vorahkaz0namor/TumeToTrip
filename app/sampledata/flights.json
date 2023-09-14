@@ -1,0 +1,278 @@
+{
+    "flights": [
+        {
+            "startDate": "2023-09-21 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "MOW",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Москва",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 1
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                }
+            ],
+            "price": 2170,
+            "searchToken": "LED210923MOWY100"
+        },
+        {
+            "startDate": "2023-09-23 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "SCW",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Сыктывкар",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 1
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                }
+            ],
+            "price": 4200,
+            "searchToken": "LED230923SCWY100"
+        },
+        {
+            "startDate": "2023-09-29 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "KMW",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Кострома",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 1
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                }
+            ],
+            "price": 4255,
+            "searchToken": "LED290923KMWY100"
+        },
+        {
+            "startDate": "2023-09-21 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "VGD",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Вологда",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 1
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                }
+            ],
+            "price": 4465,
+            "searchToken": "LED210923VGDY100"
+        },
+        {
+            "startDate": "2023-09-18 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "MSQ",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Минск",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 1
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                }
+            ],
+            "price": 4595,
+            "searchToken": "LED180923MSQY100"
+        },
+        {
+            "startDate": "2023-10-06 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "KLF",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Калуга",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 1
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                }
+            ],
+            "price": 5107,
+            "searchToken": "LED061023KLFY100"
+        },
+        {
+            "startDate": "2023-09-25 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "GOJ",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Нижний Новгород",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 1
+                }
+            ],
+            "price": 5330,
+            "searchToken": "LED250923GOJY100"
+        },
+        {
+            "startDate": "2023-10-20 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "CEK",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Челябинск",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 1
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                }
+            ],
+            "price": 5615,
+            "searchToken": "LED201023CEKY100"
+        },
+        {
+            "startDate": "2023-10-02 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "MRV",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Минеральные Воды",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 1
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                }
+            ],
+            "price": 5765,
+            "searchToken": "LED021023MRVY100"
+        },
+        {
+            "startDate": "2023-09-17 00:00:00 +0000 UTC",
+            "endDate": "0001-01-01 00:00:00 +0000 UTC",
+            "startLocationCode": "LED",
+            "endLocationCode": "KVX",
+            "startCity": "Санкт-Петербург",
+            "endCity": "Киров",
+            "serviceClass": "",
+            "seats": [
+                {
+                    "passengerType": "",
+                    "count": 1
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                },
+                {
+                    "passengerType": "",
+                    "count": 0
+                }
+            ],
+            "price": 5874,
+            "searchToken": "LED170923KVXY100"
+        }
+    ]
+}

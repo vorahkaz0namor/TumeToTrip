@@ -39,13 +39,13 @@ android {
 
 dependencies {
 
-    def core_version = "1.12.0"
+    def core_version = "1.10.1"
     def appcompat_version = "1.6.1"
     def mdc_version = "1.9.0"
     def constraint_version = "2.1.4"
     def activity_version = "1.7.2"
     def lifecycle_version = "2.6.2"
-    def navigation_version = "2.7.2"
+    def navigation_version = "2.5.3"
     def room_version = "2.5.2"
     def okhttp_version = "5.0.0-alpha.11"
     def retrofit_version = "2.9.0"
