@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/feedFlightFragment">
+
+    <fragment
+        android:id="@+id/feedFlightFragment"
+        android:name="ru.sign.conditional.timetotrip.activity.FeedFlightFragment"
+        tools:layout="@layout/fragment_feed_flight">
+        <action
+            android:id="@+id/action_feedFlightFragment_to_singleFlightFragment"
+            app:destination="@id/singleFlightFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/singleFlightFragment"
+        android:name="ru.sign.conditional.timetotrip.activity.SingleFlightFragment"
+        tools:layout="@layout/fragment_single_flight"/>
+
+</navigation>
