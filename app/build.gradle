@@ -27,6 +27,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", '"https://vmeste.wildberries.ru"'
         }
+        debug {
+            buildConfigField "String", "BASE_URL", '"https://vmeste.wildberries.ru"'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
