@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.mapLatest
 import ru.sign.conditional.timetotrip.dao.FlightDao
+import ru.sign.conditional.timetotrip.dto.FeedItem
 import ru.sign.conditional.timetotrip.dto.Flight
 import ru.sign.conditional.timetotrip.entity.FlightEntity
 import ru.sign.conditional.timetotrip.util.AndroidUtils.defaultDispatcher
@@ -18,7 +19,7 @@ class FlightRepositoryImpl @Inject constructor(
     private val flightDao: FlightDao,
     private val flightPager: Pager<Int, FlightEntity>
 ): FlightRepository {
-    override val data: Flow<PagingData<Flight>>
+    override val data: Flow<PagingData<FeedItem>>
         get() = flightPager.flow
             .mapLatest {
                 it.map(FlightEntity::toDto)
@@ -30,4 +31,14 @@ class FlightRepositoryImpl @Inject constructor(
                 it?.toDto()
             }
             .flowOn(defaultDispatcher)
+
+    override suspend fun likeFlight(flight: Flight) {
+        flightDao.saveFlights(
+            listOf(
+                FlightEntity.fromDto(
+                    flight.copy(likedByMe = !flight.likedByMe)
+                )
+            )
+        )
+    }
 }
