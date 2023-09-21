@@ -7,10 +7,4 @@
     android:orientation="vertical"
     tools:context=".activity.SingleFlightFragment">
 
-    <include
-        layout="@layout/card_flight"/>
-
-    <include
-        layout="@layout/card_flight"/>
-
 </LinearLayout>

@@ -25,6 +25,7 @@
         android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         tools:text="@sample/flights.json/flights/startCity" />
 
 </LinearLayout>

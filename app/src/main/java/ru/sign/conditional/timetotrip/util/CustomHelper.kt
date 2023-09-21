@@ -1,6 +1,7 @@
 package ru.sign.conditional.timetotrip.util
 
 import retrofit2.HttpException
+import ru.sign.conditional.timetotrip.dto.Flight
 import java.net.ConnectException
 
 object CustomHelper {
@@ -16,4 +17,24 @@ object CustomHelper {
             else -> HTTP_UNKNOWN_ERROR
         }
     }
+    val firstFlightSample = Flight(
+        searchToken = "LED210923SVOY100",
+        startDate = "2023-09-21 14:50:00 +0000 UTC",
+        endDate = "2023-09-21 16:15:00 +0000 UTC",
+        startLocationCode = "LED",
+        endLocationCode = "SVO",
+        startCity = "Санкт-Петербург",
+        endCity = "Москва",
+        price = 3470
+    )
+    val secondFlightSample = Flight(
+        searchToken = "LED210923ORDY100",
+        startDate = "2023-09-21 13:15:00 +0000 UTC",
+        endDate = "2023-09-23 17:50:00 +0000 UTC",
+        startLocationCode = "LED",
+        endLocationCode = "ORD",
+        startCity = "Санкт-Петербург",
+        endCity = "Чикаго",
+        price = 154955
+    )
 }

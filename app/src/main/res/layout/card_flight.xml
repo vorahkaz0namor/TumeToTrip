@@ -69,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/price_title"
+            app:layout_constraintTop_toTopOf="@id/price"
             app:layout_constraintBottom_toBottomOf="@id/price"
             app:layout_constraintEnd_toStartOf="@id/price"
             />
@@ -80,8 +81,8 @@
             style="@style/Widget.AppTheme.PriceView"
             tools:text="@sample/flights.json/flights/price"
             app:layout_constraintEnd_toStartOf="@id/like"
-            app:layout_constraintTop_toBottomOf="@id/divider"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/like"
+            app:layout_constraintBottom_toBottomOf="@id/like"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

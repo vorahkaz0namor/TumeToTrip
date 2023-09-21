@@ -36,6 +36,10 @@
         <item name="iconTint">@color/color_like_button</item>
         <item name="android:checkable">true</item>
         <item name="icon">@drawable/like_selector</item>
+        <item name="iconSize">@dimen/like_icon_size</item>
+        <item name="android:padding">@dimen/zero_dp</item>
+        <item name="android:layout_marginEnd">@dimen/divider_margin</item>
+        <item name="android:layout_marginTop">@dimen/divider_margin</item>
         <item name="contentDescription">@string/favorite_flight</item>
     </style>
 
