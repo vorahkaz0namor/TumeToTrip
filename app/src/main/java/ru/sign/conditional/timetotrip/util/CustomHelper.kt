@@ -1,12 +1,15 @@
 package ru.sign.conditional.timetotrip.util
 
+import okhttp3.internal.http.HTTP_FORBIDDEN
+import okhttp3.internal.http.HTTP_NOT_FOUND
+import okhttp3.internal.http.HTTP_NO_CONTENT
+import okhttp3.internal.http.HTTP_UNAUTHORIZED
 import retrofit2.HttpException
-import ru.sign.conditional.timetotrip.dto.Flight
 import java.net.ConnectException
 
 object CustomHelper {
     /** `520 Unknown Error` (non-standard HTTP code CloudFlare) */
-    private const val HTTP_UNKNOWN_ERROR = 520
+    const val HTTP_UNKNOWN_ERROR = 520
     /** `444 Connection Failed` (thought up code) */
     private const val HTTP_CONNECTION_FAILED = 444
     /** Definition of the exception code */
@@ -17,24 +20,24 @@ object CustomHelper {
             else -> HTTP_UNKNOWN_ERROR
         }
     }
-    val firstFlightSample = Flight(
-        searchToken = "LED210923SVOY100",
-        startDate = "2023-09-21 14:50:00 +0000 UTC",
-        endDate = "2023-09-21 16:15:00 +0000 UTC",
-        startLocationCode = "LED",
-        endLocationCode = "SVO",
-        startCity = "Санкт-Петербург",
-        endCity = "Москва",
-        price = 3470
-    )
-    val secondFlightSample = Flight(
-        searchToken = "LED210923ORDY100",
-        startDate = "2023-09-21 13:15:00 +0000 UTC",
-        endDate = "2023-09-23 17:50:00 +0000 UTC",
-        startLocationCode = "LED",
-        endLocationCode = "ORD",
-        startCity = "Санкт-Петербург",
-        endCity = "Чикаго",
-        price = 154955
-    )
+    val codeOverview = { code: Int ->
+        when (code) {
+            in 200..299 -> if (code == HTTP_NO_CONTENT)
+                "Body is null"
+            else
+                "Successful"
+            in 400..499 -> when (code) {
+                HTTP_CONNECTION_FAILED -> "Connection failed"
+                HTTP_NOT_FOUND -> "Not found"
+                HTTP_FORBIDDEN -> "Forbidden"
+                HTTP_UNAUTHORIZED -> "Unauthorized"
+                else -> "Bad request"
+            }
+            in 500..599 -> if (code == HTTP_UNKNOWN_ERROR)
+                "Unkown error"
+            else
+                "Internal server error"
+            else -> "Continue..."
+        }
+    }
 }

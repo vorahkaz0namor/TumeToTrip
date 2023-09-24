@@ -1,5 +1,9 @@
 package ru.sign.conditional.timetotrip.adapter
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
+import android.view.View
+import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.RecyclerView
 import ru.sign.conditional.timetotrip.R
 import ru.sign.conditional.timetotrip.databinding.CardFlightBinding
@@ -11,6 +15,24 @@ class FlightViewHolder(
     private val onInteractionListener: OnInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(flight: Flight) {
+        fillingFlightCard(flight)
+        setupOnRootListener(flight)
+        setupOnLikeListener(flight)
+    }
+
+    fun bindSingleFlight(flight: Flight) {
+        fillingFlightCard(flight)
+        setupOnLikeListener(flight)
+    }
+
+    fun bind(payload: Payload, flight: Flight?) {
+        payload.likedByMe?.let {
+            binding.like.isChecked = it
+        }
+        flight?.let(::setupOnLikeListener)
+    }
+
+    private fun fillingFlightCard(flight: Flight) {
         binding.apply {
             departurePoint.apply {
                 date.text = flight.startDateToView
@@ -63,10 +85,29 @@ class FlightViewHolder(
                 }
             }
             price.text = flight.price.toString()
+            like.isChecked = flight.likedByMe
         }
     }
 
-    fun bind(payload: Payload, flight: Flight?) {
+    private fun setupOnRootListener(flight: Flight) {
+        binding.root.setOnClickListener {
+            onInteractionListener.onShowSingleFlight(flight)
+        }
+    }
 
+    private fun setupOnLikeListener(flight: Flight) {
+        binding.like.setOnClickListener {
+            ObjectAnimator.ofPropertyValuesHolder(
+                /* target = */ it,
+                /* ...values = */ PropertyValuesHolder.ofFloat(View.SCALE_X, 1.2F, 1F),
+                /* ...values = */ PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.2F, 1F)
+            )
+                .apply {
+                    duration = 300
+                    interpolator = LinearInterpolator()
+                }
+                .start()
+            onInteractionListener.onLike(flight)
+        }
     }
 }

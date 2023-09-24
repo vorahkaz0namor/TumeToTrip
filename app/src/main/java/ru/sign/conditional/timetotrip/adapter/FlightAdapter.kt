@@ -6,12 +6,13 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.sign.conditional.timetotrip.R
 import ru.sign.conditional.timetotrip.databinding.CardFlightBinding
+import ru.sign.conditional.timetotrip.dto.FeedItem
 import ru.sign.conditional.timetotrip.dto.Flight
 import ru.sign.conditional.timetotrip.dto.Payload
 
 class FlightAdapter(
     private val onInteractionListener: OnInteractionListener
-) : PagingDataAdapter<Flight, RecyclerView.ViewHolder>(FlightCallback()) {
+) : PagingDataAdapter<FeedItem, RecyclerView.ViewHolder>(FlightCallback()) {
     override fun getItemViewType(position: Int): Int =
         when (getItem(position)) {
             is Flight -> R.layout.card_flight
@@ -21,7 +22,7 @@ class FlightAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val item = getItem(position)) {
             is Flight -> (holder as? FlightViewHolder)?.bind(item)
-            null -> getItemViewType(position)
+            else -> getItemViewType(position)
         }
     }
 
@@ -34,7 +35,7 @@ class FlightAdapter(
             payloads.map {
                 (it as? Payload)?.let { payload ->
                     (holder as? FlightViewHolder)?.let { flightViewHolder ->
-                        val updatedFlight = getItem(position)?.let { flight ->
+                        val updatedFlight = (getItem(position) as? Flight)?.let { flight ->
                             flight.copy(likedByMe = payload.likedByMe ?: flight.likedByMe)
                         }
                         flightViewHolder.bind(payload, updatedFlight)

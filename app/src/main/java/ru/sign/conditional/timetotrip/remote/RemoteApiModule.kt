@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
@@ -21,8 +22,23 @@ class RemoteApiModule {
 
     @Singleton
     @Provides
-    fun provideClient(): OkHttpClient =
-        OkHttpClient.Builder().build()
+    fun provideLogger(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BASIC
+        }
+
+    @Singleton
+    @Provides
+    fun provideClient(
+        logger: HttpLoggingInterceptor
+    ): OkHttpClient = OkHttpClient.Builder()
+        .let {
+            if (BuildConfig.DEBUG)
+                it.addInterceptor(logger)
+            else
+                it
+        }
+        .build()
 
     @Singleton
     @Provides

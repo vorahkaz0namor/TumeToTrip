@@ -12,4 +12,7 @@
     <string name="price_title">Price:</string>
     <string name="point_code_and_city">%1$s\n%2$s</string>
     <string name="single_flight">Single flight</string>
+    <string name="empty_flights_list">Can\'t find the tickets for this direction</string>
+    <string name="error_message">Something\'s going wrong…</string>
+    <string name="retry_loading">Retry</string>
 </resources>

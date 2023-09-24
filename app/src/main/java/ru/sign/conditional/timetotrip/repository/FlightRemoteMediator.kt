@@ -5,6 +5,7 @@ import androidx.paging.LoadType.*
 import retrofit2.HttpException
 import ru.sign.conditional.timetotrip.dao.FlightDao
 import ru.sign.conditional.timetotrip.dto.Flight
+import ru.sign.conditional.timetotrip.dto.StartLocationCode
 import ru.sign.conditional.timetotrip.entity.FlightEntity
 import ru.sign.conditional.timetotrip.remote.FlightRemoteApi
 
@@ -20,14 +21,16 @@ class FlightRemoteMediator(
         try {
             val response = when (loadType) {
                 REFRESH -> {
-                    flightRemoteApi.getFlights("LED")
+                    flightRemoteApi.getFlights(
+                        StartLocationCode("LED")
+                    )
                 }
                 else -> {
                     return MediatorResult.Success(false)
                 }
             }
             if (response.isSuccessful) {
-                response.body()?.let {
+                response.body()?.flights?.let {
                     if (it.isNotEmpty())
                         saveFlightsFromServer(it)
                     return MediatorResult.Success(endOfPaginationReached = it.isEmpty())
@@ -43,13 +46,13 @@ class FlightRemoteMediator(
         var newFlights: List<FlightEntity> = emptyList()
         flightDao.getAll().apply {
             flights.map { singleFlight ->
-                find {
+                val existingFlight = find {
                     it.searchToken == singleFlight.searchToken
-                } ?: {
+                }
+                if (existingFlight == null)
                     newFlights = newFlights.plus(
                         FlightEntity.fromDto(singleFlight)
                     )
-                }
             }
         }
         flightDao.saveFlights(newFlights)
