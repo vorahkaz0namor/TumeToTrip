@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">TimeToTrip</string>
+    <string name="app_name" translatable="false">TimeToTrip</string>
+    <string name="fragment_is_dead" translatable="false">Should not attempt to get binding when Fragment view is destroyed</string>
+    <string name="db_name" translatable="false">timetotrip.db</string>
+    <string name="flight_duration_description">Flight duration</string>
+    <string name="days_count">%1$s d\n</string>
+    <string name="hours_count">%1$s h\n</string>
+    <string name="flight_duration">%1$s min\non the way</string>
+    <string name="date_sample">21 sep, Thu</string>
+    <string name="time_sample" translatable="false">14:50</string>
+    <string name="favorite_flight">Favorite flight</string>
+    <string name="price_title">Price:</string>
+    <string name="point_code_and_city" translatable="false">%1$s\n%2$s</string>
+    <string name="empty_flights_list">Can\'t find the tickets for this direction</string>
+    <string name="error_message">Something\'s going wrong…</string>
+    <string name="retry_loading">Retry</string>
 </resources>
