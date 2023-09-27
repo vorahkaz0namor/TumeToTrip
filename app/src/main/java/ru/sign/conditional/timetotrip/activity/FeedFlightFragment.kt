@@ -5,7 +5,6 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
@@ -16,6 +15,8 @@ import ru.sign.conditional.timetotrip.R
 import ru.sign.conditional.timetotrip.adapter.FlightAdapter
 import ru.sign.conditional.timetotrip.adapter.OnInteractionListenerImpl
 import ru.sign.conditional.timetotrip.databinding.FragmentFeedFlightBinding
+import ru.sign.conditional.timetotrip.model.RemotePresentationState.*
+import ru.sign.conditional.timetotrip.model.asRemotePresentationState
 import ru.sign.conditional.timetotrip.util.AndroidUtils.viewScope
 import ru.sign.conditional.timetotrip.util.AndroidUtils.viewScopeWithRepeat
 import ru.sign.conditional.timetotrip.util.CustomHelper.HTTP_UNKNOWN_ERROR
@@ -27,7 +28,6 @@ class FeedFlightFragment : Fragment(R.layout.fragment_feed_flight) {
     private val binding by viewBinding(FragmentFeedFlightBinding::bind)
     private val flightViewModel: FlightViewModel by activityViewModels()
     private lateinit var flightAdapter: FlightAdapter
-    private lateinit var navController: NavController
     private var snackbar: Snackbar? = null
 
     override fun onDestroyView() {
@@ -45,7 +45,6 @@ class FeedFlightFragment : Fragment(R.layout.fragment_feed_flight) {
         flightAdapter =
             FlightAdapter(OnInteractionListenerImpl(flightViewModel))
         binding.recyclerView.root.adapter = flightAdapter
-        navController = findNavController()
     }
 
     private fun subscribe() {
@@ -56,18 +55,25 @@ class FeedFlightFragment : Fragment(R.layout.fragment_feed_flight) {
                     flightAdapter.submitData(it)
                 }
             }
+            viewScopeWithRepeat {
+                flightAdapter.loadStateFlow
+                    .asRemotePresentationState()
+                    .collectLatest {
+                        snackbarDimiss()
+                        binding.apply {
+                            progressBarView.root.isVisible = it != PRESENTED
+                            recyclerView.root.isVisible = it == PRESENTED
+                            emptyView.root.isVisible =
+                                it == PRESENTED && flightAdapter.itemCount == 0
+                        }
+                    }
+            }
             viewScope.launch {
                 flightAdapter.loadStateFlow.collectLatest { loadState ->
                     snackbarDimiss()
                     val errorState = loadState.refresh as? LoadState.Error
-                    binding.apply {
-                        progressBarView.root.isVisible =
-                            loadState.mediator?.refresh is LoadState.Loading
-                        recyclerView.root.isVisible =
-                            loadState.mediator?.refresh is LoadState.NotLoading
-                        errorView.root.isVisible =
+                    binding.errorView.root.isVisible =
                             errorState is LoadState.Error
-                    }
                     errorState?.let {
                         showSnackbar(it.error.message ?: codeOverview(HTTP_UNKNOWN_ERROR))
                     }
@@ -86,7 +92,7 @@ class FeedFlightFragment : Fragment(R.layout.fragment_feed_flight) {
             }
             flightTokenToView.observe(viewLifecycleOwner) {
                 if (it.isNotBlank()) {
-                    navController.navigate(
+                    findNavController().navigate(
                         R.id.action_feedFlightFragment_to_singleFlightFragment
                     )
                 }

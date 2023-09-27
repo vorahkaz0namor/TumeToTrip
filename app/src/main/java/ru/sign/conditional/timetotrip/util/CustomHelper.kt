@@ -20,6 +20,7 @@ object CustomHelper {
             else -> HTTP_UNKNOWN_ERROR
         }
     }
+    /** Description of the exception code */
     val codeOverview = { code: Int ->
         when (code) {
             in 200..299 -> if (code == HTTP_NO_CONTENT)

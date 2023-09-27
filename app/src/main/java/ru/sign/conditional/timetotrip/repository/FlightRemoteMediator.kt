@@ -26,7 +26,7 @@ class FlightRemoteMediator(
                     )
                 }
                 else -> {
-                    return MediatorResult.Success(false)
+                    return MediatorResult.Success(true)
                 }
             }
             if (response.isSuccessful) {

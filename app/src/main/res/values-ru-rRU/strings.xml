@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="flight_duration_description">Продолжительность полета</string>
+    <string name="days_count">%1$s дн\n</string>
+    <string name="hours_count">%1$s ч\n</string>
+    <string name="flight_duration">%1$s мин\nв пути</string>
+    <string name="date_sample">21 сент, Чт</string>
+    <string name="favorite_flight">Понравившийся полет</string>
+    <string name="price_title">Цена:</string>
+    <string name="empty_flights_list">Не удается найти билеты по этому направлению</string>
+    <string name="error_message">Что-то пошло не так…</string>
+    <string name="retry_loading">Повторить</string>
+</resources>
